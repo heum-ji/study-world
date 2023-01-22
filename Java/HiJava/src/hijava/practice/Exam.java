@@ -56,22 +56,24 @@ public class Exam {
         int total = 0;
 
         for (int num = 2; num <= 100; num++) {
-            boolean isPrime = true;
-            // 소수 판단
-            for (int j = 2; j < num; j++) {
-                if (num % j == 0) {
-                    isPrime = false;
-                    break;
-                }
-            }
 
-            if (isPrime) {
+            if (isPrime(num)) {
                 System.out.println("소수 : " + num);
                 total += num;
             }
         }
 
         System.out.println("1 ~ 100 까지의 소수의 합 : " + total);
+    }
+
+    // refactoring 소수를 판단 해줘!
+    private static boolean isPrime(int num) {
+        for (int j = 2; j < num; j++) {
+            if (num % j == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
