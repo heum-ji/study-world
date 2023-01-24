@@ -15,9 +15,6 @@ public class Exam {
          트리모양
          */
         exam5();
-
-        // 1 ~ 100 사이에 존재하는 소수의 합을 구하시오.
-        exam6();
     }
 
     private static void exam4() {
@@ -50,30 +47,6 @@ public class Exam {
             System.out.println();
         }
         System.out.println("==============================");
-    }
-
-    private static void exam6() {
-        int total = 0;
-
-        for (int num = 2; num <= 100; num++) {
-
-            if (isPrime(num)) {
-                System.out.println("소수 : " + num);
-                total += num;
-            }
-        }
-
-        System.out.println("1 ~ 100 까지의 소수의 합 : " + total);
-    }
-
-    // refactoring 소수를 판단 해줘!
-    private static boolean isPrime(int num) {
-        for (int j = 2; j < num; j++) {
-            if (num % j == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 
 }
