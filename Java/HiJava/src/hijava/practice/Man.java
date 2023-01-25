@@ -22,6 +22,11 @@ public class Man {
         this.name = name;
     }
 
+    public void sayHello() {
+        System.out.println("안녕하세요.");
+        System.out.println("제 이름은 " + this.getName() + "입니다.");
+    }
+
     public String getName() {
         return name;
     }
@@ -70,4 +75,5 @@ public class Man {
         System.out.println(hong); // 10,000 - 8,000 = 2,000
         System.out.println(john); // 10,000 - 8,500 = 1,500
     }
+
 }
