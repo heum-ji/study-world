@@ -6,17 +6,71 @@ import java.util.ArrayList;
 
 /**
  * OOP Main
+ * 상속성 : extends
+ * 은닉성 : getter / setter
+ * 다형성 : abstract / interface
  *
  * @author : Heum
  */
 public class Main {
 
     public static void main(String[] args) {
-        //al();
-        //momAndSon();
-        //koreanAndAmerican();
-        //drinkTest();
-        eatTest();
+
+//        netSport();
+//        animal();
+//        weight();
+//        AbstSuper sp = new AbstChild();
+//        int i = 5;
+//        int j = 10;
+//
+//        System.out.println("min = " + sp.min(i, j) + ", max = " + sp.max(i, j));
+
+//        al();
+//        momAndSon();
+//        koreanAndAmerican();
+//        drinkTest();
+//        eatTest();
+        softWare();
+    }
+
+    private static void softWare() {
+        SoftWare site = new WebSite();
+        SoftWare app = new MobileApp();
+
+        String s = "abc";
+
+        site.product();
+        app.product();
+    }
+
+    private static void netSport() {
+        NetSport pp = new PingPong();
+        NetSport te = new Tennis();
+
+        pp.play();
+        System.out.println("==========");
+        te.play();
+    }
+
+    private static void animal() {
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+
+        barkAnimal(dog);
+        barkAnimal(cat);
+    }
+
+    private static void barkAnimal(Animal ani) {
+        ani.bark();
+    }
+
+    private static void weight() {
+        Weight guen = new Guen();
+        Weight pound = new Pound();
+
+        int cnt = 5;
+        System.out.println("Guen = " + guen.getGram(cnt));
+        System.out.println("Pound = " + pound.getGram(cnt));
     }
 
     private static void eatTest() {
