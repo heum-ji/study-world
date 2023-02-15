@@ -2,7 +2,9 @@ package hijava.oop;
 
 import hijava.practice.Man;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * OOP Main
@@ -14,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
 //        netSport();
 //        animal();
@@ -30,7 +32,91 @@ public class Main {
 //        koreanAndAmerican();
 //        drinkTest();
 //        eatTest();
-        softWare();
+//        softWare();
+//        calculator();
+//        testInterface();
+//        total();
+//        calcOper();
+        scanner2();
+    }
+
+    private static void scanner2() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            String ret = inputScan(scanner, "계산하시겠어요? (계산:enter, 종료:quit)");
+
+            if ("quit".equals(ret)) {
+                break;
+            }
+
+            int x = inputScanNumber(scanner, "첫번째 숫자(x)를 입력하세요>> ");
+            int y = inputScanNumber(scanner, "두번째 숫자(y)를 입력하세요>> ");
+
+            String op = inputScan(scanner, "연산자(* 또는 /)를 입력하세요>> ");
+
+            CalcOper co = new CalcOper();
+            System.out.print(x + " " + op + " " + y + " = ");
+
+            if ("*".equals(op)) {
+                co.mul(x, y);
+
+            } else if ("/".equals(op)) {
+                co.div(x, y);
+
+            } else {
+                System.out.println("연산자를 정확히 입력하세요!!");
+            }
+        }
+        scanner.close();
+    }
+
+
+    private static int inputScanNumber(Scanner scanner, String msg) {
+        return Integer.parseInt(inputScan(scanner, msg));
+    }
+
+    private static String inputScan(Scanner scanner, String msg) {
+        System.out.print(msg);
+        return scanner.nextLine();
+    }
+
+    private static void calcOper() {
+        CalcOper op = new CalcOper();
+        int x = 10;
+        int y = 5;
+
+        int a = op.add(x, y);
+        int s = op.sub(x, y);
+        System.out.println(a + ", " + s);
+        op.mul(x, y);
+        op.div(x, y);
+    }
+
+    private static void total() {
+        int[] arr = new int[]{1, 2, 5, 9};
+
+        SubTotal st = new SubTotal();
+        System.out.println("Total=" + st.sum(arr));
+    }
+
+    private static void testInterface() throws SQLException {
+        TestInterface ti = new TestImpl();
+        ti.select("SELECT * FROM table");
+        TestInterface.out(100);
+
+        Dog.eat("Meat");
+    }
+
+    private static void calculator() {
+        Calculator calc = new CalculatorImpl();
+
+        int x = 10;
+        int y = 5;
+        calc.add(x, y);
+        calc.div(x, y);
+        calc.div(x, 0);
+
     }
 
     private static void softWare() {
