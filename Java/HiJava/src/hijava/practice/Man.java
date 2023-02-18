@@ -64,16 +64,30 @@ public class Man {
 
     public static void main(String[] args) {
         Man hong = new Man("Hong");
-        Man john = new Man("John");
+        Man kim = new Man("Kim");
+        Man kildong = hong;
+        Man ilsoo = new Man("Kim");
 
-        hong.buyCoffee(1);  // 3,000
-        hong.buyDonut(2);   // 5,000
+        System.out.println("hong hash=" + hong.hashCode());
+        System.out.println("kim hash=" + kim.hashCode());
+        System.out.println("kildong hash=" + kildong.hashCode());
+        System.out.println("real memory=" + System.identityHashCode(kildong));
 
-        john.buyCoffee(2); // 6,000
-        john.buyDonut(1);  // 2,500
+//        System.out.println(hong.equals(kim));
+//        System.out.println(hong.equals(kildong));
+//        System.out.println(ilsoo.equals(kim));
 
-        System.out.println(hong); // 10,000 - 8,000 = 2,000
-        System.out.println(john); // 10,000 - 8,500 = 1,500
+//        Man hong = new Man("Hong");
+//        Man john = new Man("John");
+//
+//        hong.buyCoffee(1);  // 3,000
+//        hong.buyDonut(2);   // 5,000
+//
+//        john.buyCoffee(2); // 6,000
+//        john.buyDonut(1);  // 2,500
+//
+//        System.out.println(hong); // 10,000 - 8,000 = 2,000
+//        System.out.println(john); // 10,000 - 8,500 = 1,500
     }
 
 }
