@@ -10,6 +10,10 @@ public class Student implements Cloneable, Comparable<Student> {
     private int id;
     private String name;
 
+    public Student() {
+        this.name = "Guest";
+    }
+
     public Student(int id, String name) {
         this.id = id;
         this.name = name;
@@ -93,7 +97,7 @@ public class Student implements Cloneable, Comparable<Student> {
 
     /**
      * TreeSet 사용시 항상 Comparable implements 해서 compareTo 메서드 Override 해야 함
-     * 
+     *
      * @param o the object to be compared.
      *
      * @return
