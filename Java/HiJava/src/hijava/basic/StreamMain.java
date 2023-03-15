@@ -1,0 +1,84 @@
+package hijava.basic;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * 스트림 Main 클래스
+ */
+public class StreamMain {
+
+    public static void main(String[] args) {
+        //test1();
+        //test2();
+        tryThis();
+    }
+
+
+    /**
+     * try this
+     */
+    private static void tryThis() {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(90, "홍길동"));
+        students.add(new Student(80, "김일수"));
+        students.add(new Student(75, "김이수"));
+        students.add(new Student(95, "김삼수"));
+
+        // 1. 학생들의 이름을 출력하시오
+        students.forEach(s -> System.out.println("1=" + s.getName()));
+
+        // 2. 학번의 총점과 평균을 구하시오. (sum, average)
+        // list -> 배열로 변환
+        Student[] stuArr = new Student[students.size()];
+        students.toArray(stuArr);
+
+        // IntStream ids = Arrays.stream(stuArr).mapToInt(s -> s.getId()); // stream은 1회성 이므로, 재사용 불가
+
+        // 총점 계산
+        int sum = Arrays.stream(stuArr).mapToInt(s -> s.getId()).sum();
+        // 평균 계산
+        double avg = Arrays.stream(stuArr).mapToInt(s -> s.getId()).average().getAsDouble();
+
+        System.out.println("2(sum)=" + sum);
+        System.out.println("2(avg)=" + avg);
+
+        // 3. 학생중 성적이 90번 이상인 학생의 이름을 정렬하여 출력하시오.
+        Arrays.stream(stuArr).filter(s -> s.getId() >= 90).sorted().forEach(s -> System.out.println("3=" + s.toString()));
+    }
+
+    private static void test2() {
+        int[] arr = new int[]{2, 3, 1, 5, 3, 2};
+        double avg = Arrays.stream(arr).average().getAsDouble(); // Arrays.stream(arr).average() :OptionalDouble
+        System.out.println("avg = " + avg);
+
+        Arrays.stream(arr).sorted().forEach(n -> System.out.println("sort=" + n)); // 정렬된 데이터를 1개씩 forEach
+        Arrays.stream(arr).distinct().forEach(n -> System.out.println("distinct=" + n)); // 중복 제거
+
+        Arrays.stream(arr).sorted().distinct().forEach(n -> System.out.println("sortDist=" + n)); // 정렬 + 중복제거
+
+        Arrays.stream(arr).filter(n -> n > 2).forEach(n -> System.out.println(n)); // 필터 기능 조건에 해당할때만 다음 진행
+        System.out.println("==========");
+        // 0, 2, 5, 6, 11, 14, 16 순으로 처리 됨
+        System.out.println(Arrays.stream(arr).reduce(0, (p, n) -> p + n));  // reduce 2개씩 비교 0 : 시작지점, p : prev 이전값, n은 현재값
+    }
+
+    private static void test1() {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(100, "Hong100"));
+        students.add(new Student(20, "Lim20"));
+        students.add(new Student(5, "Lee5"));
+
+        students.stream().map(s -> s.getName()).forEach(n -> System.out.println("s=" + n));
+
+        students.stream().mapToInt(s -> s.getId()).sum(); // int형으로 해야 sum 사용가능
+
+        System.out.println(students);
+        System.out.println("==========");
+        Collections.sort(students, new Sorting());
+        System.out.println(students);
+    }
+
+}
