@@ -1,5 +1,8 @@
 package hijava.basic;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,9 +14,65 @@ import java.util.List;
 public class StreamMain {
 
     public static void main(String[] args) {
-        //test1();
-        //test2();
-        tryThis();
+        //         test1();
+        //         test2();
+        //         tryThis();
+        //         test3();
+        //        test4();
+        //        try {
+        //            test5();
+        //        } catch (IOException e) {
+        //            e.printStackTrace();
+        //        }
+        test6();
+    }
+
+    // test4 보다 더 좋은 코드 : try with resource - auto close 처리 해줌
+    private static void test6() {
+        try (FileInputStream fis = new FileInputStream("test.txt")) {
+            System.out.println("00000000000000");
+        } catch (FileNotFoundException e) {
+            System.out.println("test.txt 파일이 없습니다!!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // throws 하면 호출한 곳에서 exception 처리 해야 함
+    private static void test5() throws IOException {
+        FileInputStream fis = new FileInputStream("test.txt");
+        fis.close();
+    }
+
+    // test3 개선버전
+    private static void test4() {
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream("test.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("test.txt 파일이 없습니다!!" + e.getMessage());
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void test3() {
+        try {
+            FileInputStream fis = new FileInputStream("test.txt");
+            fis.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("test.txt 파일이 없습니다!!" + e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
