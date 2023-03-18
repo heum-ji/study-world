@@ -1,8 +1,6 @@
 package hijava.basic;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,6 +10,8 @@ import java.util.List;
  * 스트림 Main 클래스
  */
 public class StreamMain {
+    private static final String FILE = "test.txt";
+    private static final String CHARSET = "UTF-8"; // 한글 처리용
 
     public static void main(String[] args) {
         //         test1();
@@ -24,7 +24,72 @@ public class StreamMain {
         //        } catch (IOException e) {
         //            e.printStackTrace();
         //        }
-        test6();
+        //        test6();
+        writeFile("세종대왕 한글 123");
+        readFile();
+    }
+
+    // readFile0 개선 : BufferedReader 사용
+    private static void readFile() {
+        try (FileInputStream fis = new FileInputStream(FILE)) {
+            InputStreamReader isr = new InputStreamReader(fis, CHARSET);
+            BufferedReader br = new BufferedReader(isr);
+            String data = null;
+
+            while ((data = br.readLine()) != null) { // 파일 종료 까지 읽기
+                System.out.println(data);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // writeFile0 개선 : BufferedWriter 사용
+    private static void writeFile(String content) {
+        File file = new File(FILE);
+
+        try (FileOutputStream fos = new FileOutputStream(file)) { // 1Byte씩 Stream
+            OutputStreamWriter osw = new OutputStreamWriter(fos, CHARSET); // Byte -> UTF-8 charset 설정
+            BufferedWriter bw = new BufferedWriter(osw); // 1Byte 전송 -> Buffer(default : 8192 Byte)로 한번에 전송
+            bw.write(content);
+            bw.flush(); // 버퍼 크기 만큼 채워지지 않아도 전송
+            bw.close();
+
+            System.out.println("Write OK : " + file.getAbsolutePath());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void readFile0() {
+        try (FileInputStream fis = new FileInputStream(FILE)) {
+            int data = 0;
+            while ((data = fis.read()) != -1) {
+                System.out.print((char) data);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void writeFile0(String content) {
+        File file = new File(FILE);
+
+        try (FileOutputStream fos = new FileOutputStream(file)) {
+            fos.write(content.getBytes());
+
+            System.out.println("Write OK : " + file.getAbsolutePath());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // test4 보다 더 좋은 코드 : try with resource - auto close 처리 해줌
