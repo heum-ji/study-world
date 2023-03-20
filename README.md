@@ -5,7 +5,7 @@
   - [Hijava](https://github.com/heum-ji/study-world/tree/main/Java/HiJava)
 
 ## Spring
-- [인프런] 우아한형제들 최연소 기술이사 김영한의 스프링 완전 정복
+- [인프런] 우아한형제들 최연소 기술이사 김영한의 스프링 완전 정복 - 진행중
   - 
 
 ## Linux
