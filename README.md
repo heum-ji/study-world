@@ -5,7 +5,7 @@
   - [Hijava](https://github.com/heum-ji/study-world/tree/main/Java/HiJava)
 
 - [도서] Do it 알고리즘 코딩테스트 자바편 - 진행중
-  - [DoitCodingTest]
+  - [DoitCodingTest](https://github.com/heum-ji/study-world/tree/main/Java/DoitCodingTest)
 
 ## Spring
 - [인프런] 우아한형제들 최연소 기술이사 김영한의 스프링 완전 정복 로드맵 - 진행중
