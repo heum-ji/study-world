@@ -8,6 +8,9 @@
 - [인프런] @시코 - Java 제대로 배우기 (완벽한 기본기) - 완료
   - [Hijava](https://github.com/heum-ji/study-world/tree/main/Java/HiJava)
 
+- [인프런] 김영한의 자바 입문 - 코드로 시작하는 자바 첫걸음 - 진행중
+  - [java-start](https://github.com/heum-ji/study-world/tree/main/Java/java-start)
+
 - [도서] Do it 알고리즘 코딩테스트 자바편 - 보류
   - [DoitCodingTest](https://github.com/heum-ji/study-world/tree/main/Java/DoitCodingTest)
 
