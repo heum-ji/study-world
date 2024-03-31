@@ -11,7 +11,7 @@
   - [DoitCodingTest](https://github.com/heum-ji/study-world/tree/main/Java/DoitCodingTest)
 
 ## Spring
-- [인프런] 우아한형제들 최연소 기술이사 김영한의 스프링 완전 정복 로드맵 - 보류
+- [인프런] 우아한형제들 최연소 기술이사 김영한의 스프링 완전 정복 로드맵 - 진행중
   - [hello-spring](https://github.com/heum-ji/study-world/tree/main/Spring/hello-spring)
 
 ## DB
